@@ -1,26 +1,17 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext.js";
 
-// const exampleProduct = {
-// 	"id": 7,
-// 	"title": "White Gold Plated Princess",
-// 	"price": 9.99,
-// 	"description": "Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day...",
-// 	"category": "jewelery",
-// 	"image": "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
-// 	"rating": {
-// 	  "rate": 3,
-// 	  "count": 400
-// 	}
-//   };
 export const NewProduct = () => {
 	const { actions } = useContext(Context);
 
-	const [title, setTitle] = useState("");
-	const [price, setPrice] = useState("");
-	const [description, setDescription] = useState("");
-	const [category, setCategory] = useState("");
-	const [imageurl, setImageurl] = useState("");
+	const [item, setItem] = useState({
+		title: "",
+		price: "",
+		description: "",
+		category: "",
+		image: ""
+	});
+
 	return (
 		<div className="d-flex h-100">
 			<div className="col-4 mx-auto my-auto">
@@ -28,8 +19,13 @@ export const NewProduct = () => {
 					<label>Title</label>
 					<input
 						type="text"
-						value={title}
-						onChange={event => setTitle(event.target.value)}
+						value={item.title || ""}
+						onChange={event => {
+							setItem({
+								...item,
+								title: event.target.value
+							});
+						}}
 						className="form-control"
 						id="productTitle"
 					/>
@@ -41,8 +37,13 @@ export const NewProduct = () => {
 					<label>Price</label>
 					<input
 						type="text"
-						value={price}
-						onChange={event => setPrice(event.target.value)}
+						value={item.price || ""}
+						onChange={event => {
+							setItem({
+								...item,
+								price: event.target.value
+							});
+						}}
 						className="form-control"
 						id="productPrice"
 					/>
@@ -52,8 +53,13 @@ export const NewProduct = () => {
 					<input
 						type="text"
 						className="form-control"
-						value={description}
-						onChange={event => setDescription(event.target.value)}
+						value={item.description || ""}
+						onChange={event => {
+							setItem({
+								...item,
+								description: event.target.value
+							});
+						}}
 						id="productDescription"
 					/>
 				</div>
@@ -61,8 +67,13 @@ export const NewProduct = () => {
 					<label>Category</label>
 					<input
 						type="text"
-						value={category}
-						onChange={event => setCategory(event.target.value)}
+						value={item.category || ""}
+						onChange={event => {
+							setItem({
+								...item,
+								category: event.target.value
+							});
+						}}
 						className="form-control"
 						id="productCategory"
 					/>
@@ -71,29 +82,18 @@ export const NewProduct = () => {
 					<label>Image URL</label>
 					<input
 						type="text"
-						value={imageurl}
-						onChange={event => setImageurl(event.target.value)}
+						value={item.imageurl || ""}
+						onChange={event => {
+							setItem({
+								...item,
+								imageurl: event.target.value
+							});
+						}}
 						className="form-control"
 						id="productImage"
 					/>
 				</div>
-				<button
-					onClick={() =>
-						actions.newProduct({
-							// id: 7,
-							title: title,
-							price: price,
-							description: description,
-							category: category,
-							image: imageurl,
-							rating: {
-								rate: 0,
-								count: 0
-							}
-						})
-					}
-					type="submit"
-					className="btn btn-primary">
+				<button onClick={() => actions.newProduct(item)} type="submit" className="btn btn-primary">
 					Publish Product
 				</button>
 			</div>

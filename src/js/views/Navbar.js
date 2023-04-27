@@ -5,11 +5,11 @@ import "./Navbar.css";
 const Navbar = () => {
 	const { store } = useContext(Context);
 
-	const [isOpen, setIsOpen] = useState(true); // locales
+	const [isOpen, setIsOpen] = useState(false); // locales
 
 	return (
 		<>
-			<nav className="navbar bg-warning">
+			<nav className="navbar sticky-top bg-warning">
 				<div className="container-fluid">
 					<Link to="/" className="navbar-brand">
 						{store.title}
@@ -46,7 +46,9 @@ const Navbar = () => {
 									}}>
 									<i className="fa-solid fa-xmark"></i>
 								</div>
-								<h3 className="my-5 text-center">{store.title}</h3>
+								<h3 className="my-5 text-center">
+									<i className="fa-brands fa-opencart"></i>
+								</h3>
 								<div className="" style={{ overflow: "hidden" }}>
 									{store.carrito.map((producto, index) => (
 										<div key={index} className="">
@@ -91,6 +93,12 @@ const Navbar = () => {
 											</div>
 										</div>
 									))}
+								</div>
+								<div className="text-center my-3">
+									<button type="button" className="btn btn-warning">
+										<i className="fa-solid fa-cash-register mx-2"></i>
+										Checkout
+									</button>
 								</div>
 							</div>
 						</div>
