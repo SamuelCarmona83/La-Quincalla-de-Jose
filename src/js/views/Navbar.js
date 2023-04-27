@@ -1,39 +1,40 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { Context } from "../store/appContext.js";
 
 const Navbar = () => {
+	const { store } = useContext(Context);
+
+	const [isOpen, setIsOpen] = useState(false); // locales
+
 	return (
 		<>
 			<nav className="navbar bg-warning">
 				<div className="container-fluid">
-					<a className="navbar-brand">Navbar</a>
+					<Link to="/" className="navbar-brand">
+						{store.title}
+					</Link>
 					<form className="d-flex" role="search">
-						<input className="form-control mx-2" type="search" placeholder="Search" aria-label="Search" />
-						<button className="btn btn-outline-dark mx-2" type="submit">
-							Search
-						</button>
-						{/* <button className="btn btn-outline-dark mx-2" type="submit">
-							<i className="fa-brands fa-opencart"></i>
-						</button> */}
+						<input className="form-control mx-2 rounded-0" type="search" placeholder="Search" />
+						<div className="btn btn-outline-dark mx-2 rounded-0">Search</div>
+						<Link to="/products/new" className="btn btn-outline-dark mx-2 rounded-0">
+							New
+						</Link>
 						<div className="dropdown">
-							<button
-								className="btn btn-secondary dropdown-toggle"
-								type="button"
-								id="dropdownMenuButton"
-								data-toggle="dropdown"
-								aria-haspopup="true"
-								aria-expanded="false">
-								Dropdown button
-							</button>
-							<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a className="dropdown-item" href="#">
-									Action
-								</a>
-								<a className="dropdown-item" href="#">
-									Another action
-								</a>
-								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
+							<div onClick={() => setIsOpen(!isOpen)} className="btn btn-dark dropdown-toggle rounded-0">
+								<i className="fa-brands fa-opencart"></i>
+							</div>
+							<div className={`dropdown-menu dropdown-menu-right rounded-0 ${isOpen ? "show" : ""}`}>
+								{store.carrito.map((producto, index) => (
+									<div key={index} className="dropdown-item">
+										<img
+											src={producto.image}
+											alt={producto.title + index}
+											style={{ width: "40px", height: "40px", borderRadius: "3px" }}
+										/>
+										{producto.title}
+									</div>
+								))}
 							</div>
 						</div>
 					</form>
