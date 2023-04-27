@@ -1,0 +1,13 @@
+.sidebar{
+    max-width: 70%;
+    transition: 0.25s ease all;
+}
+
+.sidebarOpen {
+    
+}
+
+
+.sidebarClose {
+    max-width: 0;
+}
