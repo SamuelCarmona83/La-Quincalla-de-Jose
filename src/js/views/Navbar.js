@@ -12,15 +12,15 @@ const Navbar = () => {
 			<nav className="navbar sticky-top bg-warning">
 				<div className="container-fluid">
 					<Link to="/" className="navbar-brand">
-						{store.title}
+						<span className="text-dark">{store.title}</span>
 					</Link>
-					<div className="d-flex" role="search">
+					<div className="d-flex">
 						<input className="form-control mx-2 rounded-0" type="search" placeholder="Search" />
 						<div className="btn btn-outline-dark mx-2 rounded-0">Search</div>
 						<Link to="/products/new" className="btn btn-outline-dark mx-2 rounded-0">
 							New
 						</Link>
-						<div onClick={() => setIsOpen(!isOpen)} className="btn btn-dark rounded-0">
+						<div onClick={() => setIsOpen(!isOpen)} className="btn btn-dark rounded-0 mx-2">
 							<i className="fa-brands fa-opencart"></i>
 						</div>
 						<div className="" style={{ position: "relative" }}>
@@ -46,8 +46,9 @@ const Navbar = () => {
 									}}>
 									<i className="fa-solid fa-xmark"></i>
 								</div>
-								<h3 className="my-5 text-center">
+								<h3 className="mt-5 text-center">
 									<i className="fa-brands fa-opencart"></i>
+									<h3>Shopping Cart</h3>
 								</h3>
 								<div className="" style={{ overflow: "hidden" }}>
 									{store.carrito.map((producto, index) => (

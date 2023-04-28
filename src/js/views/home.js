@@ -35,6 +35,7 @@ export const Home = () => {
 										className="btn btn-warning rounded-0">
 										<i className="fa-solid fa-cart-plus"></i>
 									</button>
+									<button className="btn btn-primary rounded-0 mx-2">Details</button>
 								</div>
 							</div>
 						</div>

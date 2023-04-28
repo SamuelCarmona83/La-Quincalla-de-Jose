@@ -26,7 +26,7 @@ export const NewProduct = () => {
 								title: event.target.value
 							});
 						}}
-						className="form-control"
+						className="form-control rounded-0"
 						id="productTitle"
 					/>
 					<small id="emailHelp" className="form-text text-muted">
@@ -44,7 +44,7 @@ export const NewProduct = () => {
 								price: event.target.value
 							});
 						}}
-						className="form-control"
+						className="form-control rounded-0"
 						id="productPrice"
 					/>
 				</div>
@@ -52,7 +52,7 @@ export const NewProduct = () => {
 					<label>Description</label>
 					<input
 						type="text"
-						className="form-control"
+						className="form-control rounded-0"
 						value={item.description || ""}
 						onChange={event => {
 							setItem({
@@ -74,7 +74,7 @@ export const NewProduct = () => {
 								category: event.target.value
 							});
 						}}
-						className="form-control"
+						className="form-control rounded-0"
 						id="productCategory"
 					/>
 				</div>
@@ -89,11 +89,15 @@ export const NewProduct = () => {
 								imageurl: event.target.value
 							});
 						}}
-						className="form-control"
+						className="form-control rounded-0"
 						id="productImage"
 					/>
 				</div>
-				<button onClick={() => actions.newProduct(item)} type="submit" className="btn btn-primary">
+				<button
+					onClick={() => (item.title != "" ? actions.newProduct(item) : () => {})}
+					type="submit"
+					className="btn btn-primary rounded-0"
+					style={{ backgroundColor: "teal", border: 0 }}>
 					Publish Product
 				</button>
 			</div>
