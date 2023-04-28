@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 import "./Navbar.css";
 const Navbar = () => {
-	const { store } = useContext(Context);
+	const { store, actions } = useContext(Context);
 
 	const [isOpen, setIsOpen] = useState(false); // locales
 
@@ -87,7 +87,11 @@ const Navbar = () => {
 																	<i className="fa-solid fa-minus"></i>
 																</button>
 															</div>
-															<button className="btn btn-danger">Remover</button>
+															<button
+																onClick={() => actions.removeProductFromCart(producto)}
+																className="btn btn-danger">
+																Remover
+															</button>
 														</div>
 													</div>
 												</div>
